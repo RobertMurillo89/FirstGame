@@ -6,7 +6,10 @@ public static class AudioFunctionalities
 {
     public static void PlayRandomClip(AudioSource source, AudioClip[] clips, float pitchmin = 1f, float pitchmax = 1f)
     {
-        if (clips.Length < 2) return; // checks to make sure there is more then one.
+        if (clips.Length < 2)
+        {
+            source.Play();
+        }// checks to make sure there is more then one.
 
         source.pitch = Random.Range(pitchmin, pitchmax);
 

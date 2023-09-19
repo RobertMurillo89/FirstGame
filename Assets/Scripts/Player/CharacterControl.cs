@@ -2,7 +2,7 @@
 
 public class CharacterControl : MonoBehaviour {
 
-    public Animator AC;
+    //public Animator AC;
     public CharacterController CC;
     public float Speed = 5;
 	public float SpeedRotation = 10;
@@ -14,7 +14,7 @@ public class CharacterControl : MonoBehaviour {
     void Start()
     {
         _jumpForce = Mathf.Sqrt(2 * Physics.gravity.magnitude * JumpHeight);
-        if (AC == null) AC = gameObject.GetComponent<Animator>();
+        //if (AC == null) AC = gameObject.GetComponent<Animator>();
         _velocity.y = -CC.stepOffset * 10;
     }
 
@@ -27,12 +27,12 @@ public class CharacterControl : MonoBehaviour {
     {       
         if (CC.isGrounded)
         {
-            AC.SetBool("IsJumping", false);
+           // AC.SetBool("IsJumping", false);
             _velocity.y = -CC.stepOffset * 10;//So there is pressure towards the grounds, makes sure the next frame the character is still grounded
 
             if (Input.GetButtonDown("Jump"))
             {
-                AC.SetBool("IsJumping", true);
+               // AC.SetBool("IsJumping", true);
                 ApplyJump();
             }
         }
@@ -53,9 +53,9 @@ public class CharacterControl : MonoBehaviour {
         float max = Mathf.Max(Mathf.Abs(Input.GetAxis("Vertical")), Mathf.Abs(Input.GetAxis("Horizontal")));
         _velocity = this.transform.forward * max * Speed;
         _velocity.y = y;
-        AC.SetBool("IsRunning", true);
+       // AC.SetBool("IsRunning", true);
         
-        if(max <= 0.1f) AC.SetBool("IsRunning", false); //idle
+        //if(max <= 0.1f) AC.SetBool("IsRunning", false); //idle
     }
 
     private void ApplyGravity()

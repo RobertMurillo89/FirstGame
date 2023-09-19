@@ -23,14 +23,6 @@ public class PlayerController : MonoBehaviour
     private float lastJumpTime = 0f;
     private float jumpCooldown = 1f;
 
-    //isJumping = true;
-    ////if (groundedPlayer && isJumping)
-    ////{
-    ////    PlayerSounds.LandEmote();
-    ////}
-    //isJumping = false;
-
-
     void Start()
     {
 
@@ -40,6 +32,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        Sprint();
     }
 
     void MovePlayer()
@@ -49,14 +42,29 @@ public class PlayerController : MonoBehaviour
         //Handle Grounded State
         if (groundedPlayer)
         {
-            playerVelocity.y = 0f; // Ensures the player does not accumulate downward velocity when grounded.
-            jumpCount = 0;
+            
+            if(isJumping)
+            {
+                PlayerSounds.LandEmote();
+            }
 
+            playerVelocity.y = 0f;
+            playerVelocity.x = 0f;
+            playerVelocity.z = 0f;// Ensures the player does not accumulate downward velocity when grounded.
+            jumpCount = 0;
+            isJumping = false;
+
+            //Handle FootStepSFX
+            if (moveDirection.normalized.magnitude > 0f && !isJumping)
+            {
+                playerVelocity = moveDirection * MoveSpeed;
+                PlayerSounds.PlayFootstep(playerVelocity);
+            }
         }
 
         //Handle Input
         moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
-               (Input.GetAxis("Vertical") * transform.forward);
+                        (Input.GetAxis("Vertical") * transform.forward);
         moveDirection.Normalize();
         controller.Move(moveDirection * Time.deltaTime * MoveSpeed);
         
@@ -64,21 +72,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && jumpCount < JumpMax && Time.time - lastJumpTime > jumpCooldown)
         {
             lastJumpTime = Time.time;
-            playerVelocity.y += JumpHeight;
+            playerVelocity.y = Mathf.Sqrt(JumpHeight * -2f * GravityValue);
             PlayerSounds.JumpEmote();
             jumpCount++;
+            isJumping = true;
         }
-        
-        //Apply Gravity
-        playerVelocity.y += GravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
 
-        playerVelocity = moveDirection * MoveSpeed;
-        if (moveDirection.magnitude > 0f && groundedPlayer)
         {
-            PlayerSounds.PlayFootstep(playerVelocity);            
+            //Apply Gravity
+            playerVelocity.y += GravityValue * Time.deltaTime;
         }
-        Sprint();
+        controller.Move(playerVelocity * Time.deltaTime);        
 
     }
 

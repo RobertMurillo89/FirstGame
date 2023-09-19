@@ -8,14 +8,19 @@ public class CameraController : MonoBehaviour
     [SerializeField] int lockVertMin;
     [SerializeField] int lockVertMax;
     [SerializeField] bool invertY;
+    public bool curserLocked;
+    public Transform PlayerBody;
 
     float xRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (curserLocked)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     // Update is called once per frame
@@ -40,5 +45,6 @@ public class CameraController : MonoBehaviour
         //rotate the player on the Y-axis
         transform.parent.Rotate(Vector3.up * mouseX);
 
+        //PlayerBody.Rotate(Vector3.up * mouseX);
     }
 }
