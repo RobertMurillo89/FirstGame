@@ -72,7 +72,7 @@ AudioSource:
   m_GameObject: {fileID: 1432266520343924891}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6303731194024230865, guid: 60a1bc01218f5e243875ad7ae0f19e15, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.684
@@ -311,7 +311,7 @@ AudioSource:
   m_GameObject: {fileID: 3402337910192662718}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6303731194024230865, guid: 60a1bc01218f5e243875ad7ae0f19e15, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.684
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4896945225382230379}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2fa0a5cfe422234a9a7cc4c79743fed, type: 3}
   m_Name: 
@@ -569,6 +569,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a72075e6f64484f439a527a0106b6da9, type: 3}
   - {fileID: 8300000, guid: de9cddc9dd430ef4b90a3c6f4c1e5317, type: 3}
   LandSFX:
-  - {fileID: 8300000, guid: fd2aab9e6ff2f554db6280bf002681dd, type: 3}
+  - {fileID: 8300000, guid: 39f775dbc22f82f49b3189e1a21e1f23, type: 3}
+  - {fileID: 8300000, guid: 06d348f0fc443b84ea281b4e54b238bf, type: 3}
+  - {fileID: 8300000, guid: 15a87aea3687d1e439cdcfd432a899c2, type: 3}
+  - {fileID: 8300000, guid: 702449bf14ddb4045bf358ccd92f137d, type: 3}
+  - {fileID: 8300000, guid: 1d533f1073215fb4a849e396dceb9764, type: 3}
   FootstepFrequency: 1
   PitchRange: {x: 0.9, y: 1.1}
