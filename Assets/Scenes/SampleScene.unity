@@ -1139,6 +1139,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sign
       objectReference: {fileID: 0}
+    - target: {fileID: 7942626215012354831, guid: 014a3610f692d634998b526d522c610d, type: 3}
+      propertyPath: MaxDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942626215012354831, guid: 014a3610f692d634998b526d522c610d, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].time
+      value: 0.8295593
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942626215012354831, guid: 014a3610f692d634998b526d522c610d, type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
