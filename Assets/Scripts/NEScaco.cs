@@ -7,23 +7,23 @@ using UnityEngine.AI;
 public class NEScaco : MonoBehaviour
 {
     [SerializeField] int health;
-    public NavMeshAgent agent;
-    public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] Transform player;
+    [SerializeField] LayerMask whatIsGround, whatIsPlayer;
 
     //patroling
-    public Vector3 walkPoint;
+    [SerializeField] Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange;
+    [SerializeField] float walkPointRange;
 
     //attacking
-    public float timeBetweenAttacks;
+    [SerializeField] float timeBetweenAttacks;
     bool alreadyAttackedQ;
-    public GameObject projectile;
+    [SerializeField] GameObject projectile;
 
 
     //states
-    public float SightRange, attackRange;
+    [SerializeField] float SightRange, attackRange;
     //[SerializeField] 
     public bool playerInSightRange, playerInAttackRange;
 
