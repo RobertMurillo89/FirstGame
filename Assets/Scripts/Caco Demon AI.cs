@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour, IDamage
+public class Caco_Demon_AI : MonoBehaviour, IDamage
 {
 
     [SerializeField] GameObject Idel;
