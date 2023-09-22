@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamage
 {
     [Header("----- Components -----")]
     [SerializeField] CharacterController controller;
     public PlayerSounds PlayerSounds;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform shootPos;
+
+    [Header("----- Player Stats -----")]
+    [SerializeField] int HP;
 
     [Header("----- Player Attack -----")]
     [SerializeField] float shootRate;
@@ -110,21 +115,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //IEnumerator shoot()
+    //{
+    //    isShooting = true;
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+    //    {
+    //        IDamage damageable = hit.collider.GetComponent<IDamage>();
+
+    //        if(damageable != null)
+    //        {
+    //            damageable.TakeDamage(shootDamage);
+    //        }
+    //    }
+
+    //    yield return new WaitForSeconds(shootRate);
+    //    isShooting = false;
+    //}
+
     IEnumerator shoot()
     {
         isShooting = true;
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
-        {
-            IDamage damageable = hit.collider.GetComponent<IDamage>();
 
-            if(damageable != null)
-            {
-                damageable.TakeDamage(shootDamage);
-            }
-        }
-
+        Instantiate(bullet, shootPos.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+        //Debug.Log(How do i name what it hits when entering collider);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        HP -= amount;
+
+        if (HP <= 0)
+        {
+            GameManager.instance.youLose();
+        }
     }
 }
