@@ -78,11 +78,10 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
         }
 
-
-        //Apply Gravity
-        playerVelocity.y += GravityValue * Time.deltaTime;
-
-
+        {
+            //Apply Gravity
+            playerVelocity.y += GravityValue * Time.deltaTime;
+        }
         controller.Move(playerVelocity * Time.deltaTime);        
 
     }
