@@ -452,9 +452,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 7396537416983498967}
   PlayerSounds: {fileID: 5652964637174351718}
-  shootRate: 0
-  shootDamage: 0
-  shootDist: 0
+  shootRate: 1
+  shootDamage: 1
+  shootDist: 100
   MoveSpeed: 3
   SprintMod: 1.5
   JumpMax: 1
