@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CharacterController controller;
     public PlayerSounds PlayerSounds;
 
+    [Header("----- Player Attack -----")]
+    [SerializeField] float shootRate;
+    [SerializeField] int shootDamage;
+    [SerializeField] int shootDist;
+    private bool isShooting;
+
     [Header("----- Player Movement -----")]
     [SerializeField] float MoveSpeed;
     [SerializeField] float SprintMod;
@@ -23,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private float lastJumpTime = 0f;
     private float jumpCooldown = 1f;
 
+
     void Start()
     {
 
@@ -33,6 +40,10 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         Sprint();
+        if(Input.GetButton("Shoot") && !isShooting)
+        {
+            StartCoroutine(shoot());
+        }
     }
 
     void MovePlayer()
@@ -98,5 +109,23 @@ public class PlayerController : MonoBehaviour
             isSprinting = false;
             MoveSpeed /= SprintMod;
         }
+    }
+
+    IEnumerator shoot()
+    {
+        isShooting = true;
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+        {
+            IDamage damageable = hit.collider.GetComponent<IDamage>();
+
+            if(damageable != null)
+            {
+                damageable.TakeDamage(shootDamage);
+            }
+        }
+
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
     }
 }
