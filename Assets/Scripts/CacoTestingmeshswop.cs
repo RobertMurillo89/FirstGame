@@ -24,7 +24,7 @@ public class CacoTestingmeshswop : MonoBehaviour
         Pain1f.SetActive(false);
         Pain2f.SetActive(false);
         Idel.SetActive(true);
-        rollcall();
+        MIdel();
     }
 
     // Update is called once per frame
@@ -62,7 +62,8 @@ public class CacoTestingmeshswop : MonoBehaviour
     {
         Attack3.SetActive(false);
         Pain1.SetActive(false);
-        Idel.SetActive(true);
+        Idel.SetActive(true); 
+        Invoke("MAtt1", 0.142857f);
     }
 
     void MAtt1()
@@ -70,17 +71,20 @@ public class CacoTestingmeshswop : MonoBehaviour
         Pain1.SetActive(false);
         Idel.SetActive(false);
         Attack1.SetActive(false);
+        Invoke("MAtt2", 0.142857f);
     }
 
     void MAtt2()
     {
         Attack1.SetActive(false);
         Attack2.SetActive(true);
+        Invoke("MAtt3", 0.142857f);
     }
     void MAtt3()
     {
         Attack2.SetActive(false);
         Attack3.SetActive(true);
+        Invoke("MPain1", 0.028571f);
     }
 
     void MPain1()
@@ -93,6 +97,7 @@ public class CacoTestingmeshswop : MonoBehaviour
         Pain1f.SetActive(false);
         Pain2f.SetActive(false);
         Pain1.SetActive(true);
+        Invoke("MPain1f", 0.028571f);
     }
 
     void MPain1f()
@@ -100,17 +105,20 @@ public class CacoTestingmeshswop : MonoBehaviour
         Pain2f.SetActive(false);
         Pain1.SetActive(false);
         Pain1f.SetActive(true);
+        Invoke("MPain2", 0.028571f);
     }
 
     void MPain2()
     {
         Pain1f.SetActive(false);
         Pain2.SetActive(true);
+        Invoke("MPain2f", 0.028571f);
     }
     void MPain2f()
     {
         Pain2.SetActive(false);
         Pain2f.SetActive(true);
+        Invoke("MIdel", 0.285714f);
     }
 
 }
