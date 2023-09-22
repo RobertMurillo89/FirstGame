@@ -340,6 +340,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1442144826}
+    - target: {fileID: 234732486209426805, guid: 2f12bebd8444ff9428d21358b0f882e0, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2546807638644241635, guid: 2f12bebd8444ff9428d21358b0f882e0, type: 3}
       propertyPath: m_Name
       value: 8-Bit CacoAIdle-00
