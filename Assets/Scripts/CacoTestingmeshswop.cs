@@ -62,6 +62,7 @@ public class CacoTestingmeshswop : MonoBehaviour
     {
         Attack3.SetActive(false);
         Pain1.SetActive(false);
+        Pain2f.SetActive(false);
         Idel.SetActive(true); 
         Invoke("MAtt1", 0.142857f);
     }
@@ -70,7 +71,7 @@ public class CacoTestingmeshswop : MonoBehaviour
     {
         Pain1.SetActive(false);
         Idel.SetActive(false);
-        Attack1.SetActive(false);
+        Attack1.SetActive(true);
         Invoke("MAtt2", 0.142857f);
     }
 
