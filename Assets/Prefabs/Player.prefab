@@ -407,11 +407,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9073190863426301547}
+  - component: {fileID: 7945448194919318948}
+  - component: {fileID: 5652964637174351718}
   - component: {fileID: 5857160550914245534}
   - component: {fileID: 2553791114119424527}
-  - component: {fileID: 7945448194919318948}
   - component: {fileID: 7396537416983498967}
-  - component: {fileID: 5652964637174351718}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -438,6 +438,68 @@ Transform:
   - {fileID: 1108840246157120449}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7945448194919318948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4896945225382230379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fa0a5cfe422234a9a7cc4c79743fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 7396537416983498967}
+  PlayerSounds: {fileID: 5652964637174351718}
+  MoveSpeed: 3
+  SprintMod: 1.5
+  JumpMax: 1
+  JumpHeight: 2
+  GravityValue: -25
+--- !u!114 &5652964637174351718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4896945225382230379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e913bd26a231d498eb00c6c897a563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocomotionSource: {fileID: 3860285764503787111}
+  EmoteSource: {fileID: 2841024494514411719}
+  FootStepSFX:
+  - {fileID: 8300000, guid: 1ac85a925071d4c7285744f353deb576, type: 3}
+  - {fileID: 8300000, guid: ec403119ca3fa439fb7ecae6ac612f99, type: 3}
+  - {fileID: 8300000, guid: 31bcc48bd1b664c4ca591bd8fa4c664b, type: 3}
+  - {fileID: 8300000, guid: 401ad8dbf6e0e496e962da54b156b991, type: 3}
+  - {fileID: 8300000, guid: 659c8600eb7f64875ab96aed81086960, type: 3}
+  - {fileID: 8300000, guid: a1d917a6f5a0641bd8931bfbeabac8dc, type: 3}
+  - {fileID: 8300000, guid: 0882277b4e1fd4e088c0518e308a3edf, type: 3}
+  - {fileID: 8300000, guid: 8767b16c21bc9441ba428f01c1f37dc9, type: 3}
+  - {fileID: 8300000, guid: b018bd998a6e84dd68da71cf3af5e45e, type: 3}
+  JumpSFX:
+  - {fileID: 8300000, guid: e16b89331c2ebfd4b8f919441f8c5e0f, type: 3}
+  - {fileID: 8300000, guid: 1107f0d961b7e5e43932f7f761aaf017, type: 3}
+  - {fileID: 8300000, guid: 1a4b08a809268af40befda7cc4ce8fa1, type: 3}
+  - {fileID: 8300000, guid: 02c4e313537f91948838992bd5fdd89e, type: 3}
+  - {fileID: 8300000, guid: 804c21c06b5348846be30aabad813316, type: 3}
+  - {fileID: 8300000, guid: 5ae9a9336acaef547ad567ff8bbbf479, type: 3}
+  - {fileID: 8300000, guid: f592b7ffddf0701469cc5383cf187dda, type: 3}
+  - {fileID: 8300000, guid: 0866222ed1baba34bbbd0114d6b9f4d1, type: 3}
+  - {fileID: 8300000, guid: a72075e6f64484f439a527a0106b6da9, type: 3}
+  - {fileID: 8300000, guid: de9cddc9dd430ef4b90a3c6f4c1e5317, type: 3}
+  LandSFX:
+  - {fileID: 8300000, guid: 39f775dbc22f82f49b3189e1a21e1f23, type: 3}
+  - {fileID: 8300000, guid: 06d348f0fc443b84ea281b4e54b238bf, type: 3}
+  - {fileID: 8300000, guid: 15a87aea3687d1e439cdcfd432a899c2, type: 3}
+  - {fileID: 8300000, guid: 702449bf14ddb4045bf358ccd92f137d, type: 3}
+  - {fileID: 8300000, guid: 1d533f1073215fb4a849e396dceb9764, type: 3}
+  FootstepFrequency: 1
+  PitchRange: {x: 0.9, y: 1.1}
 --- !u!33 &5857160550914245534
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -488,25 +550,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7945448194919318948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4896945225382230379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2fa0a5cfe422234a9a7cc4c79743fed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 7396537416983498967}
-  PlayerSounds: {fileID: 5652964637174351718}
-  MoveSpeed: 3
-  SprintMod: 1.5
-  JumpMax: 1
-  JumpHeight: 2
-  GravityValue: -25
 --- !u!143 &7396537416983498967
 CharacterController:
   m_ObjectHideFlags: 0
@@ -533,46 +576,3 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5652964637174351718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4896945225382230379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e913bd26a231d498eb00c6c897a563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LocomotionSource: {fileID: 3860285764503787111}
-  EmoteSource: {fileID: 2841024494514411719}
-  FootStepSFX:
-  - {fileID: 8300000, guid: 1ac85a925071d4c7285744f353deb576, type: 3}
-  - {fileID: 8300000, guid: ec403119ca3fa439fb7ecae6ac612f99, type: 3}
-  - {fileID: 8300000, guid: 31bcc48bd1b664c4ca591bd8fa4c664b, type: 3}
-  - {fileID: 8300000, guid: 401ad8dbf6e0e496e962da54b156b991, type: 3}
-  - {fileID: 8300000, guid: 659c8600eb7f64875ab96aed81086960, type: 3}
-  - {fileID: 8300000, guid: a1d917a6f5a0641bd8931bfbeabac8dc, type: 3}
-  - {fileID: 8300000, guid: 0882277b4e1fd4e088c0518e308a3edf, type: 3}
-  - {fileID: 8300000, guid: 8767b16c21bc9441ba428f01c1f37dc9, type: 3}
-  - {fileID: 8300000, guid: b018bd998a6e84dd68da71cf3af5e45e, type: 3}
-  JumpSFX:
-  - {fileID: 8300000, guid: e16b89331c2ebfd4b8f919441f8c5e0f, type: 3}
-  - {fileID: 8300000, guid: 1107f0d961b7e5e43932f7f761aaf017, type: 3}
-  - {fileID: 8300000, guid: 1a4b08a809268af40befda7cc4ce8fa1, type: 3}
-  - {fileID: 8300000, guid: 02c4e313537f91948838992bd5fdd89e, type: 3}
-  - {fileID: 8300000, guid: 804c21c06b5348846be30aabad813316, type: 3}
-  - {fileID: 8300000, guid: 5ae9a9336acaef547ad567ff8bbbf479, type: 3}
-  - {fileID: 8300000, guid: f592b7ffddf0701469cc5383cf187dda, type: 3}
-  - {fileID: 8300000, guid: 0866222ed1baba34bbbd0114d6b9f4d1, type: 3}
-  - {fileID: 8300000, guid: a72075e6f64484f439a527a0106b6da9, type: 3}
-  - {fileID: 8300000, guid: de9cddc9dd430ef4b90a3c6f4c1e5317, type: 3}
-  LandSFX:
-  - {fileID: 8300000, guid: 39f775dbc22f82f49b3189e1a21e1f23, type: 3}
-  - {fileID: 8300000, guid: 06d348f0fc443b84ea281b4e54b238bf, type: 3}
-  - {fileID: 8300000, guid: 15a87aea3687d1e439cdcfd432a899c2, type: 3}
-  - {fileID: 8300000, guid: 702449bf14ddb4045bf358ccd92f137d, type: 3}
-  - {fileID: 8300000, guid: 1d533f1073215fb4a849e396dceb9764, type: 3}
-  FootstepFrequency: 1
-  PitchRange: {x: 0.9, y: 1.1}
