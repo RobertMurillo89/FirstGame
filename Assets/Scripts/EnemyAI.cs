@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
-    [SerializeField] int HP;
-    [SerializeField] int Speed;
-
+    [Header("----- Components -----")]
     [SerializeField] Renderer model;
+    [SerializeField] NavMeshAgent agent;
+
+    [Header("----- Stats -----")]
+    [SerializeField] int HP;
+
+
+    [Header("----- Attack -----")]
+
+
+    [Header("----- Movement -----")]
+    [SerializeField] int Speed;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +29,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.player.transform.position, Time.deltaTime * Speed);
+        agent.SetDestination(GameManager.instance.player.transform.position);
     }
 
     public void TakeDamage(int amount)

@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     private float lastJumpTime = 0f;
     private float jumpCooldown = 1f;
 
-
     void Start()
     {
 
