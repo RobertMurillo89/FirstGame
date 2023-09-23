@@ -89,8 +89,9 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
     public void TakeDamage(int amount)
     {
         HP -= amount;
+        MPain1();
 
-        PlayPainEmote();
+        //PlayPainEmote();
         if (HP <= 0)
         {
             GameManager.instance.updateGameGoal(-1);
