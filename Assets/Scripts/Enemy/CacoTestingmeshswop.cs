@@ -56,8 +56,8 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
     public void TakeDamage(int amount)
     {
         HP -= amount;
+        //StartCoroutine(MPain1());
         MPain1();
-        //StartCoroutine(flashDamage());
 
         if (HP <= 0)
         {
@@ -65,12 +65,12 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
             Destroy(gameObject);
         }
     }
-    IEnumerator flashDamage()
-    {
-        model.material.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        model.material.color = Color.white;
-    }
+    //IEnumerator flashDamage()
+    //{
+        //model.material.color = Color.red;
+        //yield return new WaitForSeconds(0.1f);
+        //model.material.color = Color.white;
+   // }
 
     void MIdel()
     {
