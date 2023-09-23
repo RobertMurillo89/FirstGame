@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
+    [SerializeField] Transform headPos;
 
     [Header("----- Stats -----")]
     [SerializeField] int HP;
@@ -23,8 +24,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     [Header("----- Movement -----")]
     [SerializeField] int Speed;
     [SerializeField] int playerFaceSpeed; // this is to face the player smoothly instead of snapping.
+    [SerializeField] int viewAngle;
     Vector3 playerDir;
     bool playerInRange;
+    float angleToPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -36,29 +39,48 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange)
+        if (playerInRange && canSeePlayer())
         {
-            playerDir = GameManager.instance.player.transform.position - transform.position;
 
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                facePlayer();
-                if (!isShooting)
-                {
-                    StartCoroutine(shoot());
-
-                }
-            }
-            agent.SetDestination(GameManager.instance.player.transform.position);
         }
     }
 
     IEnumerator shoot()
     {
         isShooting = true;
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        Instantiate(bullet, shootPos.position, headPos.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    bool canSeePlayer()
+    {
+        playerDir = GameManager.instance.player.transform.position - headPos.position;
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+
+        Debug.Log(angleToPlayer);
+        Debug.DrawRay(headPos.position,playerDir);
+
+        RaycastHit hit;
+        if (Physics.Raycast(headPos.position,playerDir, out hit))
+        {
+            //enemy can see player
+            if(hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
+            {
+                //RJM just in case, need to make a seperate shoot angle from view angle
+                agent.SetDestination(GameManager.instance.player.transform.position);
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    facePlayer();
+                }
+                if (!isShooting)
+                {
+                    StartCoroutine(shoot());
+                }
+                return true;
+            }
+        }
+        return false;
     }
 
     void facePlayer()

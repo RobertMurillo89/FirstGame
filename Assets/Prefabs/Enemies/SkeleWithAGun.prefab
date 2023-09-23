@@ -3164,7 +3164,7 @@ GameObject:
   - component: {fileID: 4073300014234620251}
   - component: {fileID: 4877901777946617772}
   - component: {fileID: 2441678979407191542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SkeleWithAGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3225,10 +3225,12 @@ MonoBehaviour:
   agent: {fileID: 3813829740908222190}
   bullet: {fileID: 8433689449127789959, guid: 9d20fd9e4b3f1a8429669af3650c73b1, type: 3}
   shootPos: {fileID: 979984204167598873}
+  headPos: {fileID: 0}
   HP: 20
   shootRate: 0.5
   Speed: 3
   playerFaceSpeed: 8
+  viewAngle: 90
 --- !u!195 &3813829740908222190
 NavMeshAgent:
   m_ObjectHideFlags: 0
