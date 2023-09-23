@@ -70,13 +70,11 @@ public class EnemyAI : MonoBehaviour, IDamage
     public void TakeDamage(int amount)
     {
 
-
         //if(gameObject.CompareTag("Player"))
         //{
             HP -= amount;
         //}
         StartCoroutine(flashDamage());
-
         if (HP <= 0)
         {
             GameManager.instance.updateGameGoal(-1);

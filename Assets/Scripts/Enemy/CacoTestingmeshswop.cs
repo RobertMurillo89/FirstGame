@@ -8,21 +8,28 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
     [Header("----- Components -----")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform shootPos;
+
 
     [Header("----- Stats -----")]
     [SerializeField] int HP;
 
-
     [Header("----- Attack -----")]
-
+    [SerializeField] float shootRate;
+    bool isShooting;
 
     [Header("----- Movement -----")]
+    [SerializeField] int Speed;
+    [SerializeField] int playerFaceSpeed; // this is to face the player smoothly instead of snapping.
+    Vector3 playerDir;
+    bool playerInRange;
+
     [SerializeField] AudioClip WakeUp;
     [SerializeField] AudioClip Attack;
     [SerializeField] AudioClip Pain;
     [SerializeField] AudioClip Death;
-    AudioSource CacoSounds;
-    [SerializeField] int Speed;
+    public AudioSource CacoSounds;
     [SerializeField] GameObject Idel;
     [SerializeField] GameObject Attack1;
     [SerializeField] GameObject Attack2;
@@ -45,34 +52,70 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
         Pain1f.SetActive(false);
         Pain2f.SetActive(false);
         Idel.SetActive(true);
-        MIdel();
+        MIdol();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(GameManager.instance.player.transform.position);
+        if (playerInRange)
+        {
+            playerDir = GameManager.instance.player.transform.position - transform.position;
+
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                facePlayer();
+                if (!isShooting)
+                {
+                    StartCoroutine(shoot());
+
+                }
+            }
+            agent.SetDestination(GameManager.instance.player.transform.position);
+        }
+    }
+    IEnumerator shoot()
+    {
+        isShooting = true;
+        Instantiate(bullet, shootPos.position, transform.rotation);
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
+    }
+
+    void facePlayer()
+    {
+        Quaternion rot = Quaternion.LookRotation(playerDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
     }
     public void TakeDamage(int amount)
     {
         HP -= amount;
-        //StartCoroutine(MPain1());
-        MPain1();
 
+        PlayPainEmote();
         if (HP <= 0)
         {
             GameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }
-    //IEnumerator flashDamage()
-    //{
-        //model.material.color = Color.red;
-        //yield return new WaitForSeconds(0.1f);
-        //model.material.color = Color.white;
-   // }
-
-    void MIdel()
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
+    public void PlayPainEmote()
+    {
+        MPain1();
+    }
+    void MIdol()
     {
         Attack3.SetActive(false);
         Pain1.SetActive(false);
