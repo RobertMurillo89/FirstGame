@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] int damage;
+    [SerializeField] int headShotMult;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
     void Start()
@@ -20,9 +21,15 @@ public class Bullet : MonoBehaviour
 
         if(damageable != null)
         {
-            damageable.TakeDamage(damage);
-        }
+            if (other.GetComponent<SphereCollider>())
+            {
+                damageable.TakeDamage(damage * headShotMult);
+            }
+            else
+            {
+                damageable.TakeDamage(damage);
 
-        //Destroy(gameObject);
+            }
+        }
     }
 }

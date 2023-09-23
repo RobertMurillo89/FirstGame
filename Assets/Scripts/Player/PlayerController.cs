@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     [Header("----- Player Stats -----")]
     [SerializeField] int HP;
+    private int HPMax;
 
     [Header("----- Player Attack -----")]
     [SerializeField] float shootRate;
@@ -36,7 +37,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void Start()
     {
-
+        HPMax = HP;
+        spawnPlayer();
     }
 
     // Update is called once per frame
@@ -114,7 +116,7 @@ public class PlayerController : MonoBehaviour, IDamage
             MoveSpeed /= SprintMod;
         }
     }
-
+    ////This code is for raycast shooting instead of projectile
     //IEnumerator shoot()
     //{
     //    isShooting = true;
@@ -140,7 +142,14 @@ public class PlayerController : MonoBehaviour, IDamage
         Instantiate(bullet, shootPos.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
-        //Debug.Log(How do i name what it hits when entering collider);
+
+        //debug tool
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+        {
+            Debug.Log(hit.transform.name);
+        }
+        
     }
 
     public void TakeDamage(int amount)
@@ -151,5 +160,13 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             GameManager.instance.youLose();
         }
+    }
+
+    public void spawnPlayer()
+    {
+        controller.enabled = false;
+        transform.position = GameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
+        HP = HPMax;
     }
 }
