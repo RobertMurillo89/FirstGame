@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8529205764842256577}
   - component: {fileID: 8746129020698515902}
   - component: {fileID: 3033002160488058492}
+  - component: {fileID: 1299626623842575546}
   m_Layer: 0
   m_Name: Caco Demon
   m_TagString: Untagged
@@ -79,7 +80,7 @@ MonoBehaviour:
   agent: {fileID: 3033002160488058492}
   bullet: {fileID: 2902487119677340765, guid: aed1b022ea1b4f14faa34e2ce86d1d19, type: 3}
   shootPos: {fileID: 5834908121017005960}
-  HP: 3
+  HP: 10
   shootRate: 0.5
   Speed: 10
   playerFaceSpeed: 8
@@ -105,6 +106,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &1299626623842575546
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242488378918342999}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0, y: 6, z: 0}
 --- !u!1 &7460800013248269591
 GameObject:
   m_ObjectHideFlags: 0

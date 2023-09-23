@@ -52,7 +52,6 @@ public class EnemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
-
         Instantiate(bullet, shootPos.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -66,7 +65,12 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
-        HP -= amount;
+
+
+        //if(gameObject.CompareTag("Player"))
+        //{
+            HP -= amount;
+        //}
         StartCoroutine(flashDamage());
 
         if (HP <= 0)

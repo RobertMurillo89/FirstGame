@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
 
         if(damageable != null)
         {
+            //if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
             if (other.GetComponent<SphereCollider>())
             {
                 damageable.TakeDamage(damage * headShotMult);

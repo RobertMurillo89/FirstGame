@@ -154,6 +154,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
+        //look at enemy takedamage to turn friendly fire off.
+
         HP -= amount;
 
         if (HP <= 0)
