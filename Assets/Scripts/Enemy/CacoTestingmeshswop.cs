@@ -63,11 +63,10 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
 
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                facePlayer();
                 if (!isShooting)
                 {
-                    StartCoroutine(shoot());
-
+        isShooting = true;
+                MAtt1();
                 }
             }
             agent.SetDestination(GameManager.instance.player.transform.position);
@@ -75,7 +74,6 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
     }
     IEnumerator shoot()
     {
-        isShooting = true;
         Instantiate(bullet, shootPos.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -89,8 +87,9 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
     public void TakeDamage(int amount)
     {
         HP -= amount;
+        MPain1();
 
-        PlayPainEmote();
+        //PlayPainEmote();
         if (HP <= 0)
         {
             GameManager.instance.updateGameGoal(-1);
@@ -126,6 +125,7 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
 
     void MAtt1()
     {
+        facePlayer();
         Pain1.SetActive(false);
         Idel.SetActive(false);
         Attack1.SetActive(true);
@@ -134,15 +134,18 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
 
     void MAtt2()
     {
+        facePlayer();
         Attack1.SetActive(false);
         Attack2.SetActive(true);
         Invoke("MAtt3", 0.142857f);
     }
     void MAtt3()
     {
+        //facePlayer();
+        StartCoroutine(shoot());
         Attack2.SetActive(false);
         Attack3.SetActive(true);
-        Invoke("MPain1", 0.028571f);
+        Invoke("MIdol", 0.142857f);
     }
 
     void MPain1()
