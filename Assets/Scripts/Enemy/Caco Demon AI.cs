@@ -24,6 +24,7 @@ public class CacoDemonAI : MonoBehaviour, IDamage
     [SerializeField] int Speed;
     [SerializeField] int playerFaceSpeed; // this is to face the player smoothly instead of snapping.
     Vector3 playerDir;
+    bool playerInRange;
 
     // Start is called before the first frame update
     void Start()
@@ -35,18 +36,21 @@ public class CacoDemonAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        playerDir = GameManager.instance.player.transform.position - transform.position;
-
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (playerInRange)
         {
-            facePlayer();
-            if (!isShooting)
-            {
-                StartCoroutine(shoot());
+            playerDir = GameManager.instance.player.transform.position - transform.position;
 
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                facePlayer();
+                if (!isShooting)
+                {
+                    StartCoroutine(shoot());
+
+                }
             }
+            agent.SetDestination(GameManager.instance.player.transform.position);
         }
-        agent.SetDestination(GameManager.instance.player.transform.position);
     }
 
     IEnumerator shoot()
@@ -67,10 +71,10 @@ public class CacoDemonAI : MonoBehaviour, IDamage
     {
 
 
-        if (gameObject.CompareTag("Player"))
-        {
-            HP -= amount;
-        }
+        //if(gameObject.CompareTag("Player"))
+        //{
+        HP -= amount;
+        //}
         StartCoroutine(flashDamage());
 
         if (HP <= 0)
@@ -85,5 +89,20 @@ public class CacoDemonAI : MonoBehaviour, IDamage
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = Color.white;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
     }
 }

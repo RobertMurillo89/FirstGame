@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] int damage;
@@ -17,11 +17,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        IDamage damageable = other.GetComponent<IDamage>();
+
         if (!other.isTrigger)
         {
-            IDamage damageable = other.GetComponent<IDamage>();
-
-            if (damageable != null)
+            if (damageable != null && other.gameObject.CompareTag("Player"))
             {
                 if (other.GetComponent<SphereCollider>())
                 {
@@ -32,7 +32,6 @@ public class Bullet : MonoBehaviour
                     damageable.TakeDamage(damage);
 
                 }
-                Destroy(gameObject);
             }
         }
     }

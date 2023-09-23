@@ -143,12 +143,12 @@ public class PlayerController : MonoBehaviour, IDamage
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
 
-        //debug tool
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
-        {
-            Debug.Log(hit.transform.name);
-        }
+        ////debug tool
+        //RaycastHit hit;
+        //if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+        //{
+        //    Debug.Log(hit.transform.name);
+        //}
         
     }
 
@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour, IDamage
         //look at enemy takedamage to turn friendly fire off.
 
         HP -= amount;
-
+        UpdatePlayerUI();
         if (HP <= 0)
         {
             GameManager.instance.youLose();
@@ -170,5 +170,11 @@ public class PlayerController : MonoBehaviour, IDamage
         transform.position = GameManager.instance.playerSpawnPos.transform.position;
         controller.enabled = true;
         HP = HPMax;
+    }
+
+    public void UpdatePlayerUI()
+    {
+        //when deviding an int by an int you need to convert one to a float. 
+        GameManager.instance.playerHPBar.fillAmount = (float)HP / HPMax;
     }
 }
