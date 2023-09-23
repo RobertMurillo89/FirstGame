@@ -841,63 +841,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 979984204167598873, guid: 9f2e89f0ea4c33748b37787541c68eed, type: 3}
   m_PrefabInstance: {fileID: 5851995579791154013}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &532256785
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 242488378918342999, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_Name
-      value: Caco Demon
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -28
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 37
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
 --- !u!1 &556572909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2186,7 +2129,7 @@ GameObject:
   - component: {fileID: 2071700516}
   - component: {fileID: 2071700515}
   - component: {fileID: 2071700520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3704,6 +3647,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeleWithAGun
       objectReference: {fileID: 0}
+    - target: {fileID: 8539011599413931923, guid: 9f2e89f0ea4c33748b37787541c68eed, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3783,5 +3730,4 @@ SceneRoots:
   - {fileID: 1657438370}
   - {fileID: 613541560}
   - {fileID: 556572915}
-  - {fileID: 532256785}
   - {fileID: 7404940123848300350}
