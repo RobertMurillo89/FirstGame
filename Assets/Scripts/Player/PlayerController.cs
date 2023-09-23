@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public PlayerSounds PlayerSounds;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
+    
 
     [Header("----- Player Stats -----")]
     [SerializeField] int HP;

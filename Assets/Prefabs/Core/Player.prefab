@@ -486,7 +486,7 @@ MonoBehaviour:
   PlayerSounds: {fileID: 5652964637174351718}
   bullet: {fileID: 2902487119677340765, guid: aed1b022ea1b4f14faa34e2ce86d1d19, type: 3}
   shootPos: {fileID: 6888489139039244427}
-  HP: 10
+  HP: 5
   shootRate: 0.5
   shootDamage: 1
   shootDist: 100
