@@ -12,7 +12,7 @@ public class CcoProjectile : MonoBehaviour
     [SerializeField] GameObject Death4;
     [SerializeField] GameObject Death5;
     [SerializeField] GameObject Death6;
-
+    public bool isFlying = true;
     [SerializeField] Rigidbody rb;
     [SerializeField] int damage;
     [SerializeField] int headShotMult;
@@ -22,6 +22,7 @@ public class CcoProjectile : MonoBehaviour
     {
         Destroy(gameObject, destroyTime);
         rb.velocity = transform.forward * speed;
+        Fly1.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
