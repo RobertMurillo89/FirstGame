@@ -23,15 +23,16 @@ public class Bullet : MonoBehaviour
 
             if (damageable != null)
             {
-                if (other.GetComponent<SphereCollider>())
-                {
-                    damageable.TakeDamage(damage * headShotMult);
-                }
-                else
-                {
-                    damageable.TakeDamage(damage);
+                //if (other.GetComponent<SphereCollider>())
+                //{
+                //    damageable.TakeDamage(damage * headShotMult);
+                //}
+                //else
+                //{
+                //    damageable.TakeDamage(damage);
 
-                }
+                //}
+                damageable.TakeDamage(damage);
                 Destroy(gameObject);
             }
         }

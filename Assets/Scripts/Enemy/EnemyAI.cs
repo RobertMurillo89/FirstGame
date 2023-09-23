@@ -73,6 +73,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         //if(gameObject.CompareTag("Player"))
         //{
             HP -= amount;
+        Debug.Log(amount);
         //}
         StartCoroutine(flashDamage());
         if (HP <= 0)
