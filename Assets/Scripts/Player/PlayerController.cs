@@ -2,11 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamage
 {
     [Header("----- Components -----")]
     [SerializeField] CharacterController controller;
     public PlayerSounds PlayerSounds;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform shootPos;
+    
+
+    [Header("----- Player Stats -----")]
+    [SerializeField] int HP;
+    private int HPMax;
+
+    [Header("----- Player Attack -----")]
+    [SerializeField] float shootRate;
+    [SerializeField] int shootDamage;
+    [SerializeField] int shootDist;
+    private bool isShooting;
 
     [Header("----- Player Movement -----")]
     [SerializeField] float MoveSpeed;
@@ -25,7 +38,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        HPMax = HP;
+        spawnPlayer();
     }
 
     // Update is called once per frame
@@ -33,6 +47,10 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         Sprint();
+        if(Input.GetButton("Shoot") && !isShooting)
+        {
+            StartCoroutine(shoot());
+        }
     }
 
     void MovePlayer()
@@ -98,5 +116,66 @@ public class PlayerController : MonoBehaviour
             isSprinting = false;
             MoveSpeed /= SprintMod;
         }
+    }
+    ////This code is for raycast shooting instead of projectile
+    //IEnumerator shoot()
+    //{
+    //    isShooting = true;
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+    //    {
+    //        IDamage damageable = hit.collider.GetComponent<IDamage>();
+
+    //        if(damageable != null)
+    //        {
+    //            damageable.TakeDamage(shootDamage);
+    //        }
+    //    }
+
+    //    yield return new WaitForSeconds(shootRate);
+    //    isShooting = false;
+    //}
+
+    IEnumerator shoot()
+    {
+        isShooting = true;
+
+        Instantiate(bullet, shootPos.position, transform.rotation);
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
+
+        ////debug tool
+        //RaycastHit hit;
+        //if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+        //{
+        //    Debug.Log(hit.transform.name);
+        //}
+        
+    }
+
+    public void TakeDamage(int amount)
+    {
+        //look at enemy takedamage to turn friendly fire off.
+
+        HP -= amount;
+        UpdatePlayerUI();
+        if (HP <= 0)
+        {
+            GameManager.instance.youLose();
+        }
+    }
+
+    public void spawnPlayer()
+    {
+        controller.enabled = false;
+        transform.position = GameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
+        HP = HPMax;
+    }
+
+    public void UpdatePlayerUI()
+    {
+        //when deviding an int by an int you need to convert one to a float. 
+        GameManager.instance.playerHPBar.fillAmount = (float)HP / HPMax;
     }
 }
