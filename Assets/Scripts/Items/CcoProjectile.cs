@@ -6,13 +6,20 @@ public class CcoProjectile : MonoBehaviour
 {
     [SerializeField] GameObject Fly1;
     [SerializeField] GameObject Fly2;
-    [SerializeField] GameObject Death;
-    [SerializeField] Transform Spawnpoint;
+    [SerializeField] AudioClip WakeUp;
+    [SerializeField] AudioClip Hit;
+    public AudioSource CacoSounds;
     //public bool isFlying = true;
     [SerializeField] Rigidbody rb;
     [SerializeField] int damage;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
+    [SerializeField] GameObject Death1;
+    [SerializeField] GameObject Death2;
+    [SerializeField] GameObject Death3;
+    [SerializeField] GameObject Death4;
+    [SerializeField] GameObject Death5;
+    [SerializeField] GameObject Death6;
     void Start()
     {
         Destroy(gameObject, destroyTime);
@@ -37,18 +44,60 @@ public class CcoProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        MDeath1();
         IDamage damageable = other.GetComponent<IDamage>();
-
         if (!other.isTrigger)
         {
             if (damageable != null && other.gameObject.CompareTag("Player"))
             {
-
                 damageable.TakeDamage(damage);
-                Instantiate(Death, Spawnpoint.position, transform.rotation);
-
             }
         }
+
+    }
+    void MDeath1()
+    {
+        rb.velocity = new Vector3(0,0,0);
+        CacoSounds.PlayOneShot(Hit);
+        Fly2.SetActive(false);
+        Fly1.SetActive(false);
+        Death1.SetActive(true);
+        Invoke("MDeath3", 0.057142f);
+    }
+
+    void MDeath2()
+    {
+        Death1.SetActive(false);
+        Death2.SetActive(true);
+        Invoke("MDeath3", 0.057142f);
+    }
+    void MDeath3()
+    {
+        Death2.SetActive(false);
+        Death3.SetActive(true);
+        Invoke("MDeath4", 0.057142f);
+    }
+    void MDeath4()
+    {
+        Death3.SetActive(false);
+        Death4.SetActive(true);
+        Invoke("MDeath5", 0.057142f);
+    }
+    void MDeath5()
+    {
+        Death4.SetActive(false);
+        Death5.SetActive(true);
+        Invoke("MDeath6", 0.057142f);
+    }
+    void MDeath6()
+    {
+        Death5.SetActive(false);
+        Death6.SetActive(true);
+        Invoke("MDeath", 0.057142f);
+    }
+    void MDeath()
+    {
+        Destroy(gameObject);
     }
 }
 
