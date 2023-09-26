@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     [Header("----- Stats -----")]
     [SerializeField] int HP;
+    [SerializeField] Light flashLight;
     
 
 
@@ -71,7 +72,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
-        Instantiate(bullet, shootPos.position, headPos.rotation);
+        Instantiate(bullet, shootPos.position, shootPos.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
@@ -82,8 +83,8 @@ public class EnemyAI : MonoBehaviour, IDamage
         playerDir = GameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x,0, playerDir.z), transform.forward);
 
-        Debug.Log(angleToPlayer);
-        Debug.DrawRay(headPos.position,playerDir);
+        //Debug.Log(angleToPlayer);
+        //Debug.DrawRay(headPos.position,playerDir);
 
         RaycastHit hit;
         if (Physics.Raycast(headPos.position,playerDir, out hit))
@@ -93,6 +94,7 @@ public class EnemyAI : MonoBehaviour, IDamage
             {
                 //RJM just in case, need to make a seperate shoot angle from view angle
                 agent.SetDestination(GameManager.instance.player.transform.position);
+
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
                     facePlayer();
@@ -101,10 +103,12 @@ public class EnemyAI : MonoBehaviour, IDamage
                 {
                     StartCoroutine(shoot());
                 }
+                flashLight.color = Color.red;
                 return true;
             }
         }
         agent.stoppingDistance = 0;
+        flashLight.color = Color.white;
         return false;
     }
 
@@ -136,8 +140,8 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
-
-            HP -= amount;
+        HP -= amount;
+        agent.SetDestination(GameManager.instance.player.transform.position);
         hitMarker.clip = hitMarkerClip;
         hitMarker.Play();
         StartCoroutine(flashDamage());
