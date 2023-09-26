@@ -183,12 +183,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652775122139539265}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.087, y: 0.279, z: 1.019}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.004, y: 0.55, z: 2.501}
+  m_LocalScale: {x: 2.1147828, y: 2.1147828, z: 2.1147828}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9073190863426301547}
+  m_Father: {fileID: 2779240630209225612}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2342424610209821245
 GameObject:
@@ -563,7 +563,6 @@ Transform:
   - {fileID: 6497608237510355984}
   - {fileID: 864382228894568077}
   - {fileID: 1108840246157120449}
-  - {fileID: 6888489139039244427}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7945448194919318948
@@ -579,9 +578,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7396537416983498967}
-  PlayerSounds: {fileID: 5652964637174351718}
   bullet: {fileID: 2902487119677340765, guid: aed1b022ea1b4f14faa34e2ce86d1d19, type: 3}
   shootPos: {fileID: 6888489139039244427}
+  PlayerSounds: {fileID: 5652964637174351718}
+  ShootSource: {fileID: 0}
   HP: 25
   gunList: []
   shootRate: 0
@@ -741,7 +741,8 @@ Transform:
   m_LocalPosition: {x: 0.20765, y: -0.437, z: 0.837}
   m_LocalScale: {x: 0.4728618, y: 0.4728618, z: 0.4728618}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6888489139039244427}
   m_Father: {fileID: 4988493108897750891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6460327133038313507

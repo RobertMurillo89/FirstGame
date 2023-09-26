@@ -1159,6 +1159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cdd73317847394395fb5a7a2466b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &942095028 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5173927314875734052, guid: 46657ac01d9bf6942870a712adbc615f, type: 3}
+  m_PrefabInstance: {fileID: 1081397667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &991872648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1361,6 +1366,10 @@ PrefabInstance:
       propertyPath: ShootSource
       value: 
       objectReference: {fileID: 426972485}
+    - target: {fileID: 7945448194919318948, guid: 46657ac01d9bf6942870a712adbc615f, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 942095028}
     - target: {fileID: 9073190863426301547, guid: 46657ac01d9bf6942870a712adbc615f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.1862087

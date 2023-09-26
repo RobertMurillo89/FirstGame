@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] CharacterController controller;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
+    public Camera playerCamera;
 
     [Header("-----Audio-----")]
     public PlayerSounds PlayerSounds;
@@ -145,7 +146,11 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         isShooting = true;
 
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        //Instantiate(bullet, shootPos.position, transform.rotation);
+        GameObject bulletObject = Instantiate(bullet);
+        bulletObject.transform.position = playerCamera.transform.position + playerCamera.transform.forward;
+        bulletObject.transform.forward = shootPos.transform.forward;
+        
         ShootSource.Play();
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
