@@ -89,7 +89,7 @@ MonoBehaviour:
   rb: {fileID: 9114555949934004960}
   damage: 1
   headShotMult: 1
-  speed: 35
+  speed: 20
   destroyTime: 3
 --- !u!54 &9114555949934004960 stripped
 Rigidbody:
