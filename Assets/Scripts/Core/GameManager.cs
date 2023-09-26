@@ -9,14 +9,16 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject playerSpawnPos;
-
-    public GameObject activeMenu;
-    public GameObject pauseMenu;
-    public GameObject winMenu;
-    public GameObject loseMenu;
-
     public GameObject player;
     public PlayerController playerScript;
+
+
+    [SerializeField] GameObject activeMenu;
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject winMenu;
+    [SerializeField] GameObject loseMenu;
+
+    [SerializeField] GameObject playerDamageFlash;
 
     public TextMeshProUGUI enemiesRemainingText;
     public Image playerHPBar;
@@ -89,5 +91,11 @@ public class GameManager : MonoBehaviour
         activeMenu.SetActive(true);
     }
 
+    public IEnumerator PlayerFlashDamage()
+    {
+        playerDamageFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        playerDamageFlash.SetActive(false);
 
+    }
 }

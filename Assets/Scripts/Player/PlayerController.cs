@@ -6,19 +6,24 @@ public class PlayerController : MonoBehaviour, IDamage
 {
     [Header("----- Components -----")]
     [SerializeField] CharacterController controller;
-    public PlayerSounds PlayerSounds;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
-    
+
+    [Header("-----Audio-----")]
+    public PlayerSounds PlayerSounds;
+    public AudioSource ShootSource;
+
 
     [Header("----- Player Stats -----")]
     [SerializeField] int HP;
     private int HPMax;
 
     [Header("----- Player Attack -----")]
+    [SerializeField] List<GunStats> gunList = new List<GunStats>();
     [SerializeField] float shootRate;
     [SerializeField] int shootDamage;
-    [SerializeField] int shootDist;
+    [SerializeField] GameObject gunModel;
+    //[SerializeField] int shootDist;
     private bool isShooting;
 
     [Header("----- Player Movement -----")]
@@ -141,6 +146,7 @@ public class PlayerController : MonoBehaviour, IDamage
         isShooting = true;
 
         Instantiate(bullet, shootPos.position, transform.rotation);
+        ShootSource.Play();
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
 
@@ -158,6 +164,7 @@ public class PlayerController : MonoBehaviour, IDamage
         //look at enemy takedamage to turn friendly fire off.
 
         HP -= amount;
+        StartCoroutine(GameManager.instance.PlayerFlashDamage());
         UpdatePlayerUI();
         if (HP <= 0)
         {
@@ -177,5 +184,17 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         //when deviding an int by an int you need to convert one to a float. 
         GameManager.instance.playerHPBar.fillAmount = (float)HP / HPMax;
+    }
+
+    public void GunPickup(GunStats gun)
+    {
+        gunList.Add(gun);
+
+        shootDamage = gun.shootDamage;
+        shootRate = gun.shootRate;
+        ShootSource.clip = gun.shootSound;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
     }
 }
