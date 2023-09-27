@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d44e2c434b0804cb438b1e5371895c, type: 3}
   m_Name: Revolver
   m_EditorClassIdentifier: 
-  shootRate: 0
-  shootDamage: 0
+  shootRate: 1
+  shootDamage: 3
   ammoCur: 0
-  ammoMax: 0
-  model: {fileID: 0}
+  ammoMax: 6
+  model: {fileID: 2597094787682501055, guid: 228615f8a1d1b9b43a7894ef03d74128, type: 3}
   hitEffect: {fileID: 0}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 65201ddabb4144f6a8fb9480120b7656, type: 3}

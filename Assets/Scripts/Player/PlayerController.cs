@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] GameObject gunModel;
     //[SerializeField] int shootDist;
     private bool isShooting;
+    public int selectedGun;
 
     [Header("----- Player Movement -----")]
     [SerializeField] float MoveSpeed;
@@ -53,7 +54,9 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         MovePlayer();
         Sprint();
-        if(Input.GetButton("Shoot") && !isShooting)
+        SelectGun();
+
+        if (gunList.Count > 0 && Input.GetButton("Shoot") && !isShooting)
         {
             StartCoroutine(shoot());
         }
@@ -148,8 +151,9 @@ public class PlayerController : MonoBehaviour, IDamage
 
         //Instantiate(bullet, shootPos.position, transform.rotation);
         GameObject bulletObject = Instantiate(bullet);
-        bulletObject.transform.position = playerCamera.transform.position + playerCamera.transform.forward;
-        bulletObject.transform.forward = shootPos.transform.forward;
+       // bulletObject.transform.position = playerCamera.transform.position + playerCamera.transform.forward;
+       bulletObject.transform.position = shootPos.transform.position;
+        bulletObject.transform.forward = playerCamera.transform.forward;
         
         ShootSource.Play();
         yield return new WaitForSeconds(shootRate);
@@ -201,5 +205,29 @@ public class PlayerController : MonoBehaviour, IDamage
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
+    void SelectGun()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
+        {
+            selectedGun++;
+            ChangeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+        {
+            selectedGun--;
+            ChangeGun();
+        }
+    }
+
+    void ChangeGun()
+    {
+        shootDamage = gunList[selectedGun].shootDamage;
+        shootRate = gunList[selectedGun].shootRate;
+        ShootSource.clip = gunList[selectedGun].shootSound;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
     }
 }

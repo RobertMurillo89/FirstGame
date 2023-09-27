@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d44e2c434b0804cb438b1e5371895c, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: 
-  shootRate: 0
-  shootDamage: 0
+  shootRate: 3
+  shootDamage: 20
   ammoCur: 0
-  ammoMax: 0
-  model: {fileID: 0}
+  ammoMax: 5
+  model: {fileID: 4636073211107009164, guid: 4dbf4e38da3e1a448827b7ac898024ff, type: 3}
   hitEffect: {fileID: 0}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 5f65f7a864d7742fda4f10edfde922d2, type: 3}

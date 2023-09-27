@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d44e2c434b0804cb438b1e5371895c, type: 3}
   m_Name: Silenced Pistol
   m_EditorClassIdentifier: 
-  shootRate: 0
-  shootDamage: 0
+  shootRate: 0.35
+  shootDamage: 1
   ammoCur: 0
-  ammoMax: 0
-  model: {fileID: 0}
+  ammoMax: 17
+  model: {fileID: 5059458587342515489, guid: 9f7b1b75b8cfa0f40b93ff53f626b782, type: 3}
   hitEffect: {fileID: 0}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: f52e399be7a8ed246ace92d4eb44c55e, type: 3}

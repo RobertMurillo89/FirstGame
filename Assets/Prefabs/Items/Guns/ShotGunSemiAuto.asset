@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d44e2c434b0804cb438b1e5371895c, type: 3}
   m_Name: ShotGunSemiAuto
   m_EditorClassIdentifier: 
-  shootRate: 0
-  shootDamage: 0
+  shootRate: 0.4
+  shootDamage: 3
   ammoCur: 0
-  ammoMax: 0
-  model: {fileID: 0}
+  ammoMax: 10
+  model: {fileID: 5207684433596393996, guid: f709040fcda78464dabd6480b2c7518d, type: 3}
   hitEffect: {fileID: 0}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: d3247579c549643a5b3a95f9224eaf3c, type: 3}
