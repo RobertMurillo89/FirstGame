@@ -59,6 +59,7 @@ public class CcoProjectile : MonoBehaviour
             {
                 didHit = true;
                 MDeath1();
+                
                 damageable.TakeDamage(damage);
             }
         }
