@@ -13,8 +13,6 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
     [SerializeField] Animator anim;
-    [SerializeField] AudioSource hitMarker;
-    [SerializeField] AudioClip hitMarkerClip;
 
     [Header("----- Stats -----")]
     [SerializeField] int HP;
@@ -42,6 +40,16 @@ public class EnemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     bool destinationChosen;
     float stoppingDistOrig;
+
+    [Header("Audio")]
+    public AudioSource LocomotionSource;
+    public AudioSource shootSource;
+    public AudioSource EmoteSource;
+    public AudioSource hitMarker;
+    public AudioClip[] FootStepSFX;
+    public AudioClip[] shootClipsSFX;
+    public AudioClip[] hitMarkerClip;
+    public AudioClip[] deathClips;
 
     // Start is called before the first frame update
     void Start()
@@ -142,11 +150,11 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         HP -= amount;
         agent.SetDestination(GameManager.instance.player.transform.position);
-        hitMarker.clip = hitMarkerClip;
-        hitMarker.Play();
+        AudioFunctionalities.PlayRandomClip(EmoteSource, hitMarkerClip);
         StartCoroutine(flashDamage());
         if (HP <= 0)
         {
+            AudioFunctionalities.PlayRandomClip(EmoteSource, deathClips);// does not work not sure why
             GameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
@@ -173,5 +181,9 @@ public class EnemyAI : MonoBehaviour, IDamage
             playerInRange = false;
             agent.stoppingDistance = 0;
         }
+    }
+    public void PlayEnemyFootsteps()
+    {
+        AudioFunctionalities.PlayRandomClip(LocomotionSource, FootStepSFX);
     }
 }
