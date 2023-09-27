@@ -7,7 +7,7 @@ public class GunPickup : MonoBehaviour
     [SerializeField] GunStats Gun;
     void Start()
     {
-        
+        Gun.ammoCur = Gun.ammoMax;
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] List<GunStats> gunList = new List<GunStats>();
     [SerializeField] float shootRate;
     [SerializeField] int shootDamage;
+    //[SerializeField] int ammoCur;
+    //[SerializeField] int ammoMax;
     [SerializeField] GameObject gunModel;
     //[SerializeField] int shootDist;
     private bool isShooting;
@@ -147,25 +149,30 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        isShooting = true;
+        if (gunList[selectedGun].ammoCur > 0)
+        {
+            isShooting = true;
 
-        //Instantiate(bullet, shootPos.position, transform.rotation);
-        GameObject bulletObject = Instantiate(bullet);
-       // bulletObject.transform.position = playerCamera.transform.position + playerCamera.transform.forward;
-       bulletObject.transform.position = shootPos.transform.position;
-        bulletObject.transform.forward = playerCamera.transform.forward;
-        
-        ShootSource.Play();
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
+            gunList[selectedGun].ammoCur--;
+            UpdatePlayerUI();
 
-        ////debug tool
-        //RaycastHit hit;
-        //if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
-        //{
-        //    Debug.Log(hit.transform.name);
-        //}
-        
+            //Instantiate(bullet, shootPos.position, transform.rotation);
+            GameObject bulletObject = Instantiate(bullet);
+            // bulletObject.transform.position = playerCamera.transform.position + playerCamera.transform.forward;
+            bulletObject.transform.position = shootPos.transform.position;
+            bulletObject.transform.forward = playerCamera.transform.forward;
+
+            ShootSource.Play();
+            yield return new WaitForSeconds(shootRate);
+            isShooting = false;
+
+            ////debug tool
+            //RaycastHit hit;
+            //if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+            //{
+            //    Debug.Log(hit.transform.name);
+            //}
+        }
     }
 
     public void TakeDamage(int amount)
@@ -193,6 +200,13 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         //when deviding an int by an int you need to convert one to a float. 
         GameManager.instance.playerHPBar.fillAmount = (float)HP / HPMax;
+
+        if (gunList.Count > 0)
+        {
+            GameManager.instance.ammoCur.text = gunList[selectedGun].ammoCur.ToString("F0");
+            GameManager.instance.ammoMax.text = gunList[selectedGun].ammoMax.ToString("F0");
+        }
+
     }
 
     public void GunPickup(GunStats gun)
@@ -205,6 +219,10 @@ public class PlayerController : MonoBehaviour, IDamage
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
+
+        selectedGun = gunList.Count - 1;
+
+        UpdatePlayerUI();
     }
 
     void SelectGun()
@@ -226,8 +244,10 @@ public class PlayerController : MonoBehaviour, IDamage
         shootDamage = gunList[selectedGun].shootDamage;
         shootRate = gunList[selectedGun].shootRate;
         ShootSource.clip = gunList[selectedGun].shootSound;
+        //ammoMax = gunList[selectedGun].ammoMax;      
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
+        UpdatePlayerUI();
     }
 }
