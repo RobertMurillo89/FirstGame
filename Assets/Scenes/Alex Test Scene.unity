@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.015262511, g: 0.014062303, b: 0.012864672, a: 1}
+  m_IndirectSpecularColor: {r: 0.02996622, g: 0.029540032, b: 0.0297733, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1810,6 +1810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caco Demon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 242488378918342999, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3384555032157824788, guid: 91188b86d6e7e86448cc9a515439d530, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.15
@@ -1967,9 +1971,7 @@ MonoBehaviour:
   EmoteClips:
   - {fileID: 8300000, guid: e457a049f5bded644b83030ae2b04bb9, type: 3}
   DeathClips:
-  - {fileID: 8300000, guid: 8e224ddd572beb74b8251628187a44de, type: 3}
-  - {fileID: 8300000, guid: d4530f17ebbc9c444af6b0fbd77df451, type: 3}
-  - {fileID: 8300000, guid: 0aa497a7ef10ca24ea81fa0a796d888c, type: 3}
+  - {fileID: 8300000, guid: 792b51922f8258f41960b26d88ba7b2a, type: 3}
 --- !u!195 &1674109631
 NavMeshAgent:
   m_ObjectHideFlags: 0
