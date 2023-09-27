@@ -65,7 +65,7 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
             {
                 if (!isShooting)
                 {
-        isShooting = true;
+                isShooting = true;
                 MAtt1();
                 }
             }
@@ -146,6 +146,7 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
         Attack2.SetActive(false);
         Attack3.SetActive(true);
         Invoke("MIdol", 0.142857f);
+        //isShooting = false;
     }
 
     void MPain1()
@@ -165,7 +166,6 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
 
     void MPain1f()
     {
-        Pain2f.SetActive(false);
         Pain1.SetActive(false);
         Pain1f.SetActive(true);
         Invoke("MPain2", 0.028571f);
@@ -187,7 +187,7 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
     {
         Pain2f.SetActive(false);
         Pain1.SetActive(true);
-        Invoke("MIdel", 0.057142f);
+        Invoke("MIdol", 0.057142f);
     }
 
 }
