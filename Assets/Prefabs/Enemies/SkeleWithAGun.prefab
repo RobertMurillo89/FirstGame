@@ -3901,7 +3901,7 @@ MonoBehaviour:
   shootPos: {fileID: 979984204167598873}
   headPos: {fileID: 8365662461448087278}
   anim: {fileID: 1279838057753537842}
-  HP: 10
+  HP: 2
   flashLight: {fileID: 117625529711592601}
   shootRate: 0.5
   shootAngle: 10
@@ -3937,7 +3937,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3676835f14e4f6f41b8815dbea965efb, type: 3}
   - {fileID: 8300000, guid: c481996e0d8619f4880d769a4522b083, type: 3}
   deathClips:
-  - {fileID: 0}
   - {fileID: 8300000, guid: 56e32b9661b32a2458ba38307d5343ca, type: 3}
   - {fileID: 8300000, guid: 880e5d7920ac5da4ea51c936c2562437, type: 3}
   - {fileID: 8300000, guid: fa4188880eb8d7c4697415a9ef3c7635, type: 3}

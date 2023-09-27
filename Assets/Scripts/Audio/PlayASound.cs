@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class PlayASound : MonoBehaviour
 {
+    public static PlayASound instance;
     public AudioSource MusicSource;
     public AudioClip MusicClip;
     public AudioSource AmbiSource;
     public AudioClip AmbiClip;
+    public AudioSource SFXSource;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
