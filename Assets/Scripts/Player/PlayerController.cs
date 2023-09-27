@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [Header("----- Player Movement -----")]
     [SerializeField] float MoveSpeed;
     [SerializeField] float SprintMod;
-    [SerializeField] int JumpMax;
+    public int JumpMax;
     [SerializeField] int JumpHeight;
     [SerializeField] int GravityValue;
     private bool groundedPlayer;
@@ -43,11 +43,13 @@ public class PlayerController : MonoBehaviour, IDamage
     private bool isSprinting;
     private bool isJumping;
     private float lastJumpTime = 0f;
-    private float jumpCooldown = 1f;
+    public float jumpCooldown;
 
     void Start()
     {
         HPMax = HP;
+        JumpMax = 1;
+        jumpCooldown = 1f;
         spawnPlayer();
     }
 

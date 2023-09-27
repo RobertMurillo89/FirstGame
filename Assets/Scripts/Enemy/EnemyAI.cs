@@ -9,10 +9,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     [Header("----- Components -----")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator anim;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
-    [SerializeField] Animator anim;
 
     [Header("----- Stats -----")]
     [SerializeField] int HP;
@@ -27,8 +27,8 @@ public class EnemyAI : MonoBehaviour, IDamage
 
 
     [Header("----- Movement -----")]
-    [SerializeField] int Speed;
     [Range(1,10)][SerializeField] int playerFaceSpeed; // this is to face the player smoothly instead of snapping.
+    [SerializeField] int Speed;
     [Range(45, 360)][SerializeField] int viewAngle;
     [Range(1, 150)][SerializeField] int roamDist;
     [Range(0, 20)][SerializeField] int roamTimer;
@@ -42,8 +42,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
 
     [Header("Audio")]
-    public AudioSource LocomotionSource;
     public AudioSource shootSource;
+    public AudioSource LocomotionSource;
     public AudioSource EmoteSource;
     public AudioSource hitMarker;
     public AudioClip[] FootStepSFX;
