@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: M-16
   m_EditorClassIdentifier: 
   shootRate: 0.4
-  shootDamage: 15
-  ammoCur: 0
+  shootDamage: 2
+  ammoCur: 30
   ammoMax: 30
   model: {fileID: 1046857094895890443, guid: 7f2ba43313d127d4c8cc39072bb971d6, type: 3}
   hitEffect: {fileID: 0}

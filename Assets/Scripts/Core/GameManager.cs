@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI enemiesRemainingText;
     public Image playerHPBar;
+    public TextMeshProUGUI ammoCur;
+    public TextMeshProUGUI ammoMax;
+
 
     bool isPaused;
 

@@ -29,4 +29,9 @@ public class ButtonFunctions : MonoBehaviour
         GameManager.instance.stateUnpaused();
 
     }
+
+    public void LoadLevel(int level) //this func is to load scenes
+    {
+        SceneManager.LoadScene(level);
+    }
 }
