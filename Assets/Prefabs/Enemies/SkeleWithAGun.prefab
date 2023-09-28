@@ -3897,22 +3897,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 8421502849340773025}
   agent: {fileID: 3813829740908222190}
+  anim: {fileID: 1279838057753537842}
   bullet: {fileID: 8433689449127789959, guid: 9d20fd9e4b3f1a8429669af3650c73b1, type: 3}
   shootPos: {fileID: 979984204167598873}
   headPos: {fileID: 8365662461448087278}
-  anim: {fileID: 1279838057753537842}
-  HP: 2
+  HP: 1
   flashLight: {fileID: 117625529711592601}
   shootRate: 0.5
   shootAngle: 10
-  Speed: 3
   playerFaceSpeed: 10
+  Speed: 3
   viewAngle: 100
   roamDist: 5
   roamTimer: 3
   animChangeSpeed: 5
-  LocomotionSource: {fileID: 2102643906192397036}
   shootSource: {fileID: 4117933167579842163}
+  LocomotionSource: {fileID: 2102643906192397036}
   EmoteSource: {fileID: 1397253118206230860}
   hitMarker: {fileID: 1904080046367557628}
   FootStepSFX:
