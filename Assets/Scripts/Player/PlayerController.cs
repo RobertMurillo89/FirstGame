@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour, IDamage
     private int HPMax;
 
     [Header("----- Player Attack -----")]
-    [SerializeField] List<GunStats> gunList = new List<GunStats>();
+    public List<GunStats> gunList = new List<GunStats>();
     [SerializeField] float shootRate;
-    [SerializeField] int shootDamage;
+    public int shootDamage;
     //[SerializeField] int ammoCur;
     //[SerializeField] int ammoMax;
     [SerializeField] GameObject gunModel;
@@ -160,6 +160,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
             //Instantiate(bullet, shootPos.position, transform.rotation);
             GameObject bulletObject = Instantiate(bullet);
+            
             // bulletObject.transform.position = playerCamera.transform.position + playerCamera.transform.forward;
             bulletObject.transform.position = shootPos.transform.position;
             bulletObject.transform.forward = playerCamera.transform.forward;
