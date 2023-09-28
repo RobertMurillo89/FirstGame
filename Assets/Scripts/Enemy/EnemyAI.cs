@@ -154,7 +154,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         StartCoroutine(flashDamage());
         if (HP <= 0)
         {
-            AudioFunctionalities.PlayRandomClip(PlayASound.instance.SFXSource, deathClips);// does not work not sure why
+            AudioFunctionalities.PlayRandomClip(PlayASound.instance.SFXSource, deathClips);
             GameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }

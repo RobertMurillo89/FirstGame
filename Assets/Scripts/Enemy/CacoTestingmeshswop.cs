@@ -74,6 +74,7 @@ public class CacoTestingmeshswop : MonoBehaviour, IDamage
     }
     IEnumerator shoot()
     {
+
         Instantiate(bullet, shootPos.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;

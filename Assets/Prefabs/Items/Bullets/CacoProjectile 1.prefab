@@ -110,12 +110,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fly1: {fileID: 7218769920948834759}
   Fly2: {fileID: 7602316835350494813}
-  Death: {fileID: 9164733624526462118, guid: 68d8c33d2b6fe17448676999ff357882, type: 3}
-  Spawnpoint: {fileID: 5371606602627858790}
+  WakeUp: {fileID: 8300000, guid: fb55d73e4d11aaf40854002aa2b72de6, type: 3}
+  Hit: {fileID: 8300000, guid: d04e9e9dc26fe0d47b7032e9cea2cefe, type: 3}
+  CacoSounds: {fileID: 893386397100123193}
   rb: {fileID: 6280880645198105943}
   damage: 1
   speed: 28
   destroyTime: 50
+  Death1: {fileID: 919132149155446097, guid: 3a188d45f5eb518438f8f30ed49d6436, type: 3}
+  Death2: {fileID: 919132149155446097, guid: 560ad0125df5ad24eba1f5f4ae6983e4, type: 3}
+  Death3: {fileID: 919132149155446097, guid: a7837220a14e17b42b0cf85187897ee9, type: 3}
+  Death4: {fileID: 919132149155446097, guid: 2f51e85eab5092a499ef8211fae0dfa3, type: 3}
+  Death5: {fileID: 919132149155446097, guid: 971099f09a87fe5468e81acf8024676d, type: 3}
+  Death6: {fileID: 919132149155446097, guid: d787a3dd4f988b742bb2bac97b29dc7c, type: 3}
+  didHit: 0
 --- !u!135 &3233031101204118033
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -148,7 +156,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 102183717505226081, guid: 60a1bc01218f5e243875ad7ae0f19e15, type: 2}
   m_audioClip: {fileID: 8300000, guid: fb55d73e4d11aaf40854002aa2b72de6, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -158,7 +166,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -193,7 +201,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
