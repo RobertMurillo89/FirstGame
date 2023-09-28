@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ammoCur;
     public TextMeshProUGUI ammoMax;
 
+    
+
 
     bool isPaused;
 
@@ -100,5 +102,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         playerDamageFlash.SetActive(false);
 
+    }
+
+    public void TextAnimation(Animator textAnimator)
+    {
+        TextFadeGrow.PlayAnimation(textAnimator);
     }
 }
