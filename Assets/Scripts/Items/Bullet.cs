@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
-    [SerializeField] int damage;
+    public int damage;
     [SerializeField] int headShotMult;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
@@ -32,6 +32,8 @@ public class Bullet : MonoBehaviour
                 //    damageable.TakeDamage(damage);
 
                 //}
+                //damage = GameManager.instance.playerScript.gunList[GameManager.instance.playerScript.selectedGun].shootDamage;
+                damage = GameManager.instance.playerScript.shootDamage;
                 damageable.TakeDamage(damage);
                 Destroy(gameObject);
             }
