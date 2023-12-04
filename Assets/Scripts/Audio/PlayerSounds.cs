@@ -12,6 +12,7 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip[] FootStepSFX;
     public AudioClip[] JumpSFX;
     public AudioClip[] LandSFX;
+    public AudioClip[] DamageSFX;
 
     [Range(0, 1)]
     public float FootstepFrequency;

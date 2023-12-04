@@ -113,7 +113,12 @@ public class PlayerController : MonoBehaviour, IDamage
             //Apply Gravity
             playerVelocity.y += GravityValue * Time.deltaTime;
         }
-        controller.Move(playerVelocity * Time.deltaTime);        
+        controller.Move(playerVelocity * Time.deltaTime);
+
+        if (Input.GetButtonDown("Fly"))
+            {
+            
+        }
 
     }
 
@@ -130,24 +135,6 @@ public class PlayerController : MonoBehaviour, IDamage
             MoveSpeed /= SprintMod;
         }
     }
-    ////This code is for raycast shooting instead of projectile
-    //IEnumerator shoot()
-    //{
-    //    isShooting = true;
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
-    //    {
-    //        IDamage damageable = hit.collider.GetComponent<IDamage>();
-
-    //        if(damageable != null)
-    //        {
-    //            damageable.TakeDamage(shootDamage);
-    //        }
-    //    }
-
-    //    yield return new WaitForSeconds(shootRate);
-    //    isShooting = false;
-    //}
 
     IEnumerator shoot()
     {
@@ -253,4 +240,23 @@ public class PlayerController : MonoBehaviour, IDamage
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
         UpdatePlayerUI();
     }
+
+    ////This code is for raycast shooting instead of projectile
+    //IEnumerator shoot()
+    //{
+    //    isShooting = true;
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+    //    {
+    //        IDamage damageable = hit.collider.GetComponent<IDamage>();
+
+    //        if(damageable != null)
+    //        {
+    //            damageable.TakeDamage(shootDamage);
+    //        }
+    //    }
+
+    //    yield return new WaitForSeconds(shootRate);
+    //    isShooting = false;
+    //}
 }
